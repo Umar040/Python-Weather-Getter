@@ -67,7 +67,7 @@ def WeatherCheck(city):
 
     smtpLink = smtplib.SMTP('smtp.gmail.com', 587) #Using gmail for myself need to change port and email type if you use something else
     smtpLink.starttls()
-    smtpLink.login("Your_Gmail@gmail.com","Your App Password")
+    smtpLink.login("Your_Gmail@gmail.com","Your App Password")  #("YourEmail", "Your Password")
     subject = "Weather Reminder"
     #Creating the text body
     body = "The chance to rain is "+str(rainchance)+ "% for the next 24 hours\n"
