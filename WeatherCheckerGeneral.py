@@ -83,33 +83,3 @@ def WeatherCheck(city):
     
 
 WeatherCheck('birmingham')
-
-#_____________________________________________________________________________________________________________________________________________________________________________________________--
-#Old Code Below
-
-#Old code 2 where I used google but they do not show hourly so hard to calculate
-#If it will rain for the day but can return current weather
-#def WeatherCheck(city):
-#    url="https://www.google.co.uk/search?q=weather+"+city
-#    driver.get(url)
-#
-#    soup = BeautifulSoup(driver.page_source, 'html.parser')
-#    weather = soup.find('div',attrs={'class':'wob_dcp'}).text
-#    print(weather)
-#    weather2 = soup.find_all('img', alt=True)
-#    imglist=[]
-#    for img in weather2:
-#        if img['alt'] != "":
-#            imglist.append(img['alt'])
-#
-#    print(imglist)
-#
-#    driver.close()
-
-#Old code but does not work as requests returns static info only so dynamic stuff
-#like weather is not displayed or retrievable
-#def WeatherCheck(city):
-#    url="https://www.bing.com/search?q=weather+"+city
-#    html = requests.get(url).content
-#    soup = BeautifulSoup(html, 'html.parser')
-#    print(soup)
