@@ -65,7 +65,8 @@ def WeatherCheck(city):
 
     driver.close()
 
-    smtpLink = smtplib.SMTP('smtp.gmail.com', 587) #Using gmail for myself need to change port and email type if you use something else
+    #Using gmail for myself need to change port and email type if you use something else
+    smtpLink = smtplib.SMTP('smtp.gmail.com', 587) #("Email Service", Port)
     smtpLink.starttls()
     smtpLink.login("Your_Gmail@gmail.com","Your App Password")  #("YourEmail", "Your Password")
     subject = "Weather Reminder"
@@ -82,6 +83,9 @@ def WeatherCheck(city):
     
 
 WeatherCheck('birmingham')
+
+#_____________________________________________________________________________________________________________________________________________________________________________________________--
+#Old Code Below
 
 #Old code 2 where I used google but they do not show hourly so hard to calculate
 #If it will rain for the day but can return current weather
