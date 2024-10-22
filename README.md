@@ -4,7 +4,7 @@ To use the Weather Getter you need to download the chrome driver then change the
 
 Download link https://developer.chrome.com/docs/chromedriver/downloads
 
-Then for the Email you need to put your own and then put a in the next part where it says "Your App Password". I had an app password as I used gmail which uses app passwords instead of the actual password
+Then for the Email you need to put your own and then put your password in the next part where it says "Your App Password". I had an app password as I used gmail which uses app passwords instead of actual passwords
 
 Example Email:
 
