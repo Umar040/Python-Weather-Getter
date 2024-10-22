@@ -15,8 +15,8 @@ def WeatherCheck(city):
     driver.get(url)
 
     soup = BeautifulSoup(driver.page_source, 'html.parser')
-    weather = soup.find('div',attrs={'class':'wtr_hourly'}).text#Get hourly data (each 3hr period)
-    weather = weather[15:]#Get rid of text at the start
+    weather = soup.find('div',attrs={'class':'wtr_hourly'}).text #Get hourly data (each 3hr period)
+    weather = weather[15:] #Get rid of text at the start
     hourlylist = []
     for hourlyweather in weather.split('%'):
         hourlylist.append(hourlyweather+'%')
@@ -24,28 +24,28 @@ def WeatherCheck(city):
     hours = []
     tempPerp = []
     currentTime = datetime.now()
-    oneDay = hourlylist[:9]#Get next 24hr weather data
+    oneDay = hourlylist[:9] #Get next 24hr weather data
 
-    for x in oneDay:#For each day
-        if len(x) < 7:#For the first data point
-            if (len(str(currentTime.minute))<2):#If the minute value is under 10
-                hours.append(str(datetime.now().hour) +":0"+ str(datetime.now().minute))#Add a 0 to the front and add to the first data point
+    for x in oneDay: #For each day
+        if len(x) < 7: #For the first data point
+            if (len(str(currentTime.minute))<2): #If the minute value is under 10
+                hours.append(str(datetime.now().hour) +":0"+ str(datetime.now().minute)) #Add a 0 to the front and add to the first data point
             else:
                 hours.append(str(datetime.now().hour) +":"+ str(datetime.now().minute))
             tempPerp.append(x)
             #^This happens as the first data point in bing is the current exact time weather before progressing to every 3 hours
         else:
-            if ':' in x[:2]:#If the hour digit is under 10
-                hours.append(x[:4])#First 4 digits is the time
-                tempPerp.append(x[4:])#Everything after is temperature and rain chance
+            if ':' in x[:2]: #If the hour digit is under 10
+                hours.append(x[:4]) #First 4 digits is the time
+                tempPerp.append(x[4:]) #Everything after is temperature and rain chance
             else:
-                hours.append(x[:5])#Otherwise the next 5 digits is the time
-                tempPerp.append(x[5:])#And everything after is temperature and rain chance
+                hours.append(x[:5]) #Otherwise the next 5 digits is the time
+                tempPerp.append(x[5:]) #And everything after is temperature and rain chance
     #Print to console to check results
     print("The next 24 hours:")
     [print("At "+hours[x]+" Temperature and Chance to rain is "+tempPerp[x]) for x in range(len(hours))]
     
-    perpList=[]#Rain chance in next 24 hours list
+    perpList=[] #Rain chance in next 24 hours list
     #Split the perpList element by the degree symbol then take the 2nd element which is the rain chance
     #then remove the percent sign and turn the number into an integer
     [perpList.append(int(x.split('°')[1][:-1])) for x in tempPerp]
